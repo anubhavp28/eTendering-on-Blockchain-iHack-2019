@@ -1,6 +1,12 @@
 from app import app, db
 import json
 from app import ipfs
+from flask import render_template
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/execute_upload_tender')

@@ -41,7 +41,6 @@ h2 {
 }
 
 #header {
-  position: fixed;
   top: 0px;
   width: 100%;
   height: 125px;
@@ -373,7 +372,8 @@ h2 {
     padding: 20px;
     border-radius: 5px;
     border-top: 5px solid #204584;
-    margin-top: 30%;
+    margin: auto;
+    margin-top: 200px;
     background-color: #FAFAFA;
 }
 
