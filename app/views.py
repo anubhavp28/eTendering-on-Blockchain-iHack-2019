@@ -76,6 +76,11 @@ def create_seller_id():
     return 'done'
 
 
+@app.route('/create_tender')
+def create_tender():
+    return render_template('create_tender.html')
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
