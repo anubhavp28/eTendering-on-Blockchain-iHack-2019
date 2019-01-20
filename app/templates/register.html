@@ -23,75 +23,28 @@
       <a href="index.html" class="blue-background"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Home</a>
     </div>
   </div>
-  <div style="padding: 30px; display: flex; flex-direction: row; justify-content: center; align-items: flex-start;">
-    <div id="register-div" style="background-color: #f5f5fa ; width: 650px;
-       border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
-      <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">COMPANIES REGISTER
-        HERE</div>
-      <form>
-        <input id="company-name" type="textbox" class="textbox" placeholder="Company Name" style="width: 100%">
-        <input id="company-email" type="textbox" class="textbox" placeholder="Email" style="width: 100%">
-        <div id="company-skills" class="tagsbox">
-          <div class="tags-container" style="margin: 5px 0px 5px 0px;">
-
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
-               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">HTML5&nbsp;&nbsp;<i
-                class="fas fa-times"></i></div>
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
-               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">C&nbsp;&nbsp;<i
-                class="fas fa-times"></i></div>
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
-               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">PHP&nbsp;&nbsp;<i
-                class="fas fa-times"></i></div>
-          </div>
-          <div style="margin: 4px 0px; position: relative; padding: 0px;">
-            <input type="textbox" class="textbox" placeholder="Skills Required" style=" margin: 0px; width: 100%; padding-right: 50px;">
-            <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
-                 padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
-            </a>
-          </div>
-        </div>
-        <input id="company-ctc" type="textbox" class="textbox" placeholder="Approx. CTC" style="width: 100%">
-        <div id="company-positions" class="tagsbox">
-          <div class="tags-container" style="margin: 5px 0px 5px 0px;">
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
-              background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Software
-              Engineer&nbsp;&nbsp;<a href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
-              background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Security
-              Engineer&nbsp;&nbsp;<a href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-          </div>
-          <div style="margin: 4px 0px; position: relative; padding: 0px;">
-            <input type="textbox" class="textbox" placeholder="Positions Offering" style=" margin: 0px; width: 100%; padding-right: 50px;">
-            <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
-              padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
-            </a>
-          </div>
-        </div>
-        <input id="company-jobs" type="textbox" class="textbox" placeholder="Number of Positions Available" style="width: 100%">
-
-        <div id="company-location" class="tagsbox">
-          <div class="tags-container" style="margin: 5px 0px 5px 0px;">
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
-               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Mumbai&nbsp;&nbsp;<a
-                href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
-               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Delhi&nbsp;&nbsp;<a
-                href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-          </div>
-          <div style="margin: 4px 0px; position: relative; padding: 0px;">
-            <input type="textbox" class="textbox" placeholder="Office Locations" style=" margin: 0px; width: 100%; padding-right: 50px;">
-            <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
-               padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
-            </a>
-          </div>
-        </div>
-        <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Register">
-      </form>
-    </div>
+  <div style="padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+   <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
+   border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
+   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">GOV. AGENCIES REGISTER HERE</div>
+     <form>
+       <input id="dept-id" type="textbox" class="textbox" placeholder="Department ID" style="width: 100%">
+       <input id="dept-name" type="textbox" class="textbox" placeholder="Department Name" style="width: 100%">
+       <input id="dept-city" type="textbox" class="textbox" placeholder="Department City" style="width: 100%">
+       <input id="dept-state" type="textbox" class="textbox" placeholder="Department State" style="width: 100%">
+       <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Create Account">
+     </form>
+   </div>
+   <br>OR <br>
+   <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
+   border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
+   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">BIDDERS REGISTER HERE</div>
+   <form>
+     <input id="bidders-id" type="textbox" class="textbox" placeholder="Bidder's ID" style="width: 100%">
+     <input id="bidders-name" type="textbox" class="textbox" placeholder="Bidder's Name" style="width: 100%">
+     <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Create Account">
+   </form>
+   </div>
   </div>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <style>

@@ -90,6 +90,10 @@ def execute_create_tender():
 def index():
     return render_template('index.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
 
 @app.route('/execute_upload_tender')
 def execute_upload_tender():
