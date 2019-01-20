@@ -28,21 +28,21 @@
        border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
       <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">CREATE TENDER
         HERE</div>
-      <form style="color: grey;">
+      <form action="/execute_create_tender" method="post" style="color: grey;">
         <label>Tender Title</label>
-        <input id="company-name" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-name" name="tender_title" type="textbox" class="textbox" placeholder="" style="width: 100%">
         <label>Tender Ref No</label>
-        <input id="company-email" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" name="tender_refNo" type="textbox" class="textbox" placeholder="" style="width: 100%">
         <label>Tender Start Date</label>
-        <input type="date" class="textbox" style="width:100%">
+        <input type="date" name="tender_bidOpeningDate" class="textbox" style="width:100%">
         <label>Tender Closing Date</label>
-        <input type="date" class="textbox" style="width:100%">
+        <input type="date" name="tender_bidClosingDate" class="textbox" style="width:100%">
         <label>Tender Amount</label>
-        <input id="company-email" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" name="tender_amount" type="textbox" class="textbox" placeholder="" style="width: 100%">
         <label>Tender Clauses</label>
-        <textarea id="company-email" class="textbox" placeholder="" style="width: 100%"></textarea>
+        <textarea id="company-email" name="tender_clauses" class="textbox" placeholder="" style="width: 100%"></textarea>
         <label>Tender PDF</label>
-        <input id="company-email" type="file" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" name="tender_pdf" type="file" class="textbox" placeholder="" style="width: 100%">
 
         <!--
         <div id="company-skills" class="tagsbox">
@@ -103,7 +103,7 @@
             </a>
           </div> 
     </div>-->
-        <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Create Tender">
+        <input type="submit" class="button" style="width:100%;margin: 10px 0px;" value="Create Tender">
       </form>
     </div>
   </div>

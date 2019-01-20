@@ -1,7 +1,7 @@
 from app import app, db, bdb
 import json
 from app import ipfs
-from flask import render_template
+from flask import render_template, jsonify, url_for, request
 
 
 @app.route('/create_govt_dept')
@@ -79,6 +79,11 @@ def create_seller_id():
 @app.route('/create_tender')
 def create_tender():
     return render_template('create_tender.html')
+
+
+@app.route('/execute_create_tender', methods=['POST'])
+def execute_create_tender():
+    return jsonify(request.form)
 
 
 @app.route('/')
