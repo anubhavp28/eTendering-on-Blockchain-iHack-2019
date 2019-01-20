@@ -28,16 +28,19 @@
     </div>
   </div>
   <div style="padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-   <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
+   
+   
+	{% for tender in tenders %}
+	<div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
    border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
-   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">TENDER</div>
-     <span>tender_no</span>
-     <br>
-     <span>tender_name</span>
-     <br>
-     <span style="">tender_bidClosingDate</span>
-     <br>
-     <input type="button" name="viewtender" value="View Tender" class="button" style="padding: 5px; border-radius: 5px; margin-top: 10px;">
+	<div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">TENDER</div>
+   <span>{{ tender['tender_refNo'] }}</span><br>
+   <span>{{ tender['tender_title'] }}</span><br>
+   <span>{{ tender['tender_bidClosingDate'] }}</span><br>
+   <input type="button" name="viewtender" value="View Tender" class="button" style="padding: 5px; border-radius: 5px; margin-top: 10px;">
+	   </div>
+{% endfor %}     
+     
    </div>
   </div>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
