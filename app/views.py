@@ -3,8 +3,11 @@ import json
 from app import ipfs
 from flask import render_template, jsonify, url_for, request, session, redirect
 from random import randint
+import pymongo
+from pymongo import MongoClient
 from werkzeug import secure_filename
 
+client = MongoClient()
 
 @app.route('/create_govt_dept', methods=['POST'])
 def create_govt_dept():
@@ -204,7 +207,7 @@ def register():
 
 @app.route('/view_all_tenders')
 def view_all_tenders():
-    return render_template('view_all_tenders.html')
+    return render_template('view_all_tenders.html', tenders=client.ihack.tender.find())
 
 
 @app.route('/view_tender')
