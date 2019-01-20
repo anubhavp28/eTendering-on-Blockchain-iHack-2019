@@ -30,24 +30,14 @@
   <div style="padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
    <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
    border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
-   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">GOV. AGENCIES REGISTER HERE</div>
-     <form>
-       <input id="dept-id" type="textbox" class="textbox" placeholder="Department ID" style="width: 100%">
-       <input id="dept-name" type="textbox" class="textbox" placeholder="Department Name" style="width: 100%">
-       <input id="dept-city" type="textbox" class="textbox" placeholder="Department City" style="width: 100%">
-       <input id="dept-state" type="textbox" class="textbox" placeholder="Department State" style="width: 100%">
-       <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Create Account">
-     </form>
-   </div>
-   <br>OR <br>
-   <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
-   border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
-   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">BIDDERS REGISTER HERE</div>
-   <form>
-     <input id="bidders-id" type="textbox" class="textbox" placeholder="Bidder's ID" style="width: 100%">
-     <input id="bidders-name" type="textbox" class="textbox" placeholder="Bidder's Name" style="width: 100%">
-     <input type="button" class="button" onclick="companySignUp()" style="width:100%;margin: 10px 0px;" value="Create Account">
-   </form>
+   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">TENDER</div>
+     <span>tender_no</span>
+     <br>
+     <span>tender_name</span>
+     <br>
+     <span style="">tender_bidClosingDate</span>
+     <br>
+     <input type="button" name="viewtender" value="View Tender" class="button" style="padding: 5px; border-radius: 5px; margin-top: 10px;">
    </div>
   </div>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
