@@ -58,6 +58,17 @@ def login_dept():
 
     return redirect(url_for('dashboard'))
 
+@app.route('/login_seller', methods=['POST'])
+def login_seller():
+    select = db.sellers.find(
+        {"seller_publicKey": request.form['password']})
+    print(select)
+    if select:
+        for key in select:
+            session[key] = select[key]
+
+    return redirect(url_for('dashboard'))
+
 
 @app.route('/create_seller', methods=['POST'])
 def create_seller_id():
