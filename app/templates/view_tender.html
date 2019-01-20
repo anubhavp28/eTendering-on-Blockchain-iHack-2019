@@ -32,21 +32,19 @@
        border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
       <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">CREATE TENDER
         HERE</div>
-      <form action="/execute_create_tender" method="post" style="color: grey;">
+      <form style="color: grey;" id = "tenderdisplay">
         <label>Tender Title</label>
-        <input id="company-name" name="tender_title" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-name" type="textbox" class="textbox" placeholder="company-name" style="width: 100%" disabled>
         <label>Tender Ref No</label>
-        <input id="company-email" name="tender_refNo" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" type="textbox" class="textbox" placeholder="company-email" style="width: 100%" disabled>
         <label>Tender Start Date</label>
-        <input type="date" name="tender_bidOpeningDate" class="textbox" style="width:100%">
+        <input type="date" class="textbox" style="width:100%" placeholder="tender_bidOpeningDate" disabled>
         <label>Tender Closing Date</label>
-        <input type="date" name="tender_bidClosingDate" class="textbox" style="width:100%">
+        <input type="date" class="textbox" style="width:100%" placeholder="tender_bidClosingDate" disabled>
         <label>Tender Amount</label>
-        <input id="company-email" name="tender_amount" type="textbox" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" type="textbox" class="textbox" placeholder="company-email" style="width: 100%" disabled>
         <label>Tender Clauses</label>
-        <textarea id="company-email" name="tender_clauses" class="textbox" placeholder="" style="width: 100%"></textarea>
-        <label>Tender PDF</label>
-        <input id="company-email" name="tender_pdf" type="file" class="textbox" placeholder="" style="width: 100%">
+        <textarea id="company-email" class="textbox" placeholder="tender_clauses" style="width: 100%" disabled></textarea>
 
         <!--
         <div id="company-skills" class="tagsbox">
@@ -107,8 +105,21 @@
             </a>
           </div>
     </div>-->
-        <input type="submit" class="button" style="width:100%;margin: 10px 0px;" value="Create Tender">
+        <input type="button" class="button" onclick="showBiddingForm()" style="margin: 10px 0px;" value="Bid">
+        <input type="button" class="button" onclick="" style="margin: 10px 0px;" value="View PDF">
+
       </form>
+        <form style="color: grey; display: none;" id = "biddingform">
+          <label>Proposal Amount</label>
+          <input id="proposal-amount" type="textbox" class="textbox" placeholder="XXXXXXXXX" style="width: 100%" disabled>
+          <label></label>
+          <input id="company-email" type="textbox" class="textbox" placeholder="company-email" style="width: 100%" disabled>
+          <label>Clauses</label>
+          <input type="text" class="textbox" style="width:100%" placeholder="f fu fuc fuc* - Did you think i would write that F-Word ?" disabled>
+          <label>Tender PDF</label>
+          <input id="company-email" name="tender_pdf" type="file" class="textbox" placeholder="" style="width: 100%">
+          <input type="submit" class="button" style="width:100%;margin: 10px 0px;" value="Place Bid">
+          </form>
     </div>
   </div>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -123,7 +134,16 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
     crossorigin="anonymous">
-  <script type="text/javascript" src="js/main.js"></script>
+  <script>
+  function showBiddingForm() {
+    var x = document.getElementById("biddingform");
+    var y = document.getElementById("tenderdisplay")
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      y.style.display = "none";
+    }
+  }
+  </script>
 
   <script>
 

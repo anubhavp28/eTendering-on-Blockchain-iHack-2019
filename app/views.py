@@ -113,12 +113,20 @@ def execute_create_tender():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('dashboard.html')
 
 
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+@app.route('/view_all_tenders')
+def view_all_tenders():
+    return render_template('view_all_tenders.html')
+
+@app.route('/view_tender')
+def view_tender():
+    return render_template('view_tender.html')
 
 
 @app.route('/execute_upload_tender')
@@ -137,7 +145,10 @@ def execute_upload_tender():
     db.tender.insert(data)
     return 'done'
 
-
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
+	
 @app.route('/test')
 def test():
     return json.dumps(db.test.find()[0]["name"])

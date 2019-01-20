@@ -138,6 +138,14 @@ h2 {
   margin: 10px 0px;
 }
 
+.main-list>li{
+margin:10px;
+}
+.main-list{
+	display:block;
+	margin:auto;
+	list-style:none;
+	}
 #home {
   border : 0px;
   overflow: hidden;
