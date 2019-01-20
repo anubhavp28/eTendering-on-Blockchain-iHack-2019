@@ -28,10 +28,12 @@
     </div>
   </div>
   <div class="login-block">
-    <h1>Login</h1>
-    <input type="text" value="" placeholder="Username" id="username" />
-    <input type="password" value="" placeholder="Password" id="password" />
-    <button>Login</button>
+    <form action="/login_dept" method='POST'>
+      <h1>Login</h1>
+      <input name="id" type="text" value="" placeholder="Username" id="username" />
+      <input name="password" type="password" value="" placeholder="Password" id="password" />
+      <input type="submit" value="Login">
+    </form>
   </div>
   <div id="footer">
     <div id="footer-logo">

@@ -16,5 +16,6 @@ def create_app():
     db = client.ihack
     bdb_root_url = 'https://test.bigchaindb.com/'
     bdb = BigchainDB(bdb_root_url)
+    app.config['SECRET_KEY'] = "anubhav"
     from app import views
     return app

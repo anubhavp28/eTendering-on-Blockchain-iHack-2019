@@ -1,10 +1,11 @@
 from app import app, db, bdb
 import json
 from app import ipfs
-from flask import render_template, jsonify, url_for, request
+from flask import render_template, jsonify, url_for, request, session
+from random import randint
 
 
-@app.route('/create_govt_dept')
+@app.route('/create_govt_dept', methods=['POST'])
 def create_govt_dept():
     from bigchaindb_driver.crypto import generate_keypair
     new_user = generate_keypair()
@@ -12,10 +13,10 @@ def create_govt_dept():
     acc_data = {
         'data': {
             'profile': {
-                "dept_id": 8332,
-                "dept_name": "Govt College of Engineering Kalyani",
-                "dept_city": "Kolkata",
-                "dept_state": "West Bengal",
+                "dept_id": randint(1, 9999999999),
+                "dept_name": request.form['dept-name'],
+                "dept_city": request.form['dept-city'],
+                "dept_state": request.form['dept-state'],
                 "dept_publicKey": new_user.public_key,
             },
         },
@@ -26,7 +27,7 @@ def create_govt_dept():
         signers=new_user.public_key,
         asset=acc_data,
         metadata={
-            "ego": "true"
+            "test": "true"
         })
 
     fulfilled_token_tx = bdb.transactions.fulfill(
@@ -35,12 +36,25 @@ def create_govt_dept():
     bdb.transactions.send_commit(fulfilled_token_tx)
 
     acc_data['dept_privateKey'] = new_user.private_key
-    db.dept.insert(acc_data)
+    db.dept.insert(acc_data['data']['profile'])
 
     return 'done'
 
 
-@app.route('/create_seller')
+@app.route('/login_dept', methods=['POST'])
+def login_dept():
+    select = list(db.dept.find(
+        {"dept_publicKey": request.form['password']}))[0]
+    print(select)
+    select['_id'] = None
+    if select:
+        for key in select:
+            session[key] = select[key]
+
+    return jsonify(select)
+
+
+@app.route('/create_seller', methods=['POST'])
 def create_seller_id():
     from bigchaindb_driver.crypto import generate_keypair
     new_user = generate_keypair()
@@ -48,10 +62,10 @@ def create_seller_id():
     acc_data = {
         'data': {
             'profile': {
-                "seller_id": 8332,
-                "seller_name": "Baba Stationary Store",
-                "seller_city": "Kolkata",
-                "seller_state": "West Bengal",
+                "seller_id": randint(1, 9999999999),
+                "seller_name": request.form['seller-name'],
+                "seller_city": request.form['seller-city'],
+                "seller_state": request.form['seller-state'],
                 "seller_publicKey": new_user.public_key,
             },
         },
@@ -71,7 +85,7 @@ def create_seller_id():
     bdb.transactions.send_commit(fulfilled_token_tx)
 
     acc_data['seller_privateKey'] = new_user.private_key
-    db.sellers.insert(acc_data)
+    db.sellers.insert(acc_data['data']['profile'])
 
     return 'done'
 
@@ -79,6 +93,17 @@ def create_seller_id():
 @app.route('/create_tender')
 def create_tender():
     return render_template('create_tender.html')
+
+
+@app.route('/execute_create_bid')
+def execute_create_bid():
+    quotation_id
+    tender_id
+    seller_id
+    seller_publicKey
+    quotation_clause
+    quotation_amount
+    docs_ipfs_address
 
 
 @app.route('/execute_create_tender', methods=['POST'])
@@ -89,6 +114,7 @@ def execute_create_tender():
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/register')
 def register():
