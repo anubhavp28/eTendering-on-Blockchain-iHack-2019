@@ -44,7 +44,7 @@ There are three main actors interacting with the system.
 * Flask
 * MongoDB
 
-##Instructions for running locally
+## Instructions for running locally
 * Clone the repository
 * Create a python virtual environment
 * Setup IPFS and MongoDB
