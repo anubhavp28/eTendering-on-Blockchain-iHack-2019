@@ -89,6 +89,14 @@ def index():
 def register():
     return render_template('register.html')
 
+@app.route('/view_all_tenders')
+def view_all_tenders():
+    return render_template('view_all_tenders.html')
+
+@app.route('/view_tender')
+def view_tender():
+    return render_template('view_tender.html')
+
 
 @app.route('/execute_upload_tender')
 def execute_upload_tender():

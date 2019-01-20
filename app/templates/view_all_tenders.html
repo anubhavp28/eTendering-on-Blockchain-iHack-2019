@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>
+    Placement Portal : IIIT Kalyani
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#204584">
+  <meta name="msapplication-navbutton-color" content="#204584">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#204584">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo_small.png') }}">
+</head>
+
+<body>
+  <div id="header">
+    <div id="logo-holder">
+      <div id="logo" style="height:50px;">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" style="float:left; height: 90%; width: auto;">
+      </div>
+    </div>
+    <div id="nav" style="float: right;">
+      <a href="index.html" class="blue-background"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Home</a>
+    </div>
+  </div>
+  <div style="padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+   <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
+   border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
+   <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">TENDER</div>
+     <span>tender_no</span>
+     <br>
+     <span>tender_name</span>
+     <br>
+     <span style="">tender_bidClosingDate</span>
+     <br>
+     <input type="button" name="viewtender" value="View Tender" class="button" style="padding: 5px; border-radius: 5px; margin-top: 10px;">
+   </div>
+  </div>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <style>
+
+    #header {
+          position :static;
+        }
+      </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
