@@ -27,7 +27,21 @@
       <a href="javascript:void(0)" onclick="$('#mobile-menu').css('display','flex')" class="blue-background">Menu</a>
     </div>
   </div>
-  <div class="login-block">
+  <div class="buttoncontainer" style="display: flex; align-items: center; justify-content: center; margin-top: 150px;">
+    <button type="button" name="button" onclick="govlogin()" id="govbutton" class = "button" style="margin: 10px;">GOVT. LOGIN</button>
+    <br>
+    <button type="button" name="button" onclick="bidlogin()" id="bidbutton" class = "button" style="margin: 10px;">BIDDER LOGIN</button>
+  </div>
+
+  <div class="login-block" id="govlogin" style="display: none;">
+    <form action="/login_dept" method='POST'>
+      <h1>Login</h1>
+      <input name="id" type="text" value="" placeholder="Username" id="username" />
+      <input name="password" type="password" value="" placeholder="Password" id="password" />
+      <input type="submit" value="Login">
+    </form>
+  </div>
+  <div class="login-block" id="bidlogin" style="display: none;">
     <form action="/login_dept" method='POST'>
       <h1>Login</h1>
       <input name="id" type="text" value="" placeholder="Username" id="username" />
@@ -50,7 +64,28 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
     crossorigin="anonymous">
-  <script type="text/javascript" src="js/main.js"></script>
+  <script>
+    function govlogin(){
+      x=document.getElementById("govlogin");
+      y=document.getElementById("bidlogin");
+      z=document.getElementById("govbutton");
+      k=document.getElementById("bidbutton");
+      y.style.display = "none";
+      x.style.display = "block";
+      z.style.display = "none";
+      k.style.display = "none";
+    }
+    function bidlogin(){
+      x=document.getElementById("bidlogin");
+      y=document.getElementById("govlogin");
+      z=document.getElementById("bidbutton");
+      k=document.getElementById("govbutton");
+      x.style.display = "block";
+      y.style.display = "none";
+      z.style.display = "none";
+      k.style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
