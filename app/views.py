@@ -3,6 +3,7 @@ import json
 from app import ipfs
 from flask import render_template, jsonify, url_for, request, session, redirect
 from random import randint
+from werkzeug import secure_filename
 
 
 @app.route('/create_govt_dept', methods=['POST'])
@@ -76,7 +77,7 @@ def create_seller_id():
         signers=new_user.public_key,
         asset=acc_data,
         metadata={
-            "ego": "true"
+            "test": "true"
         })
 
     fulfilled_token_tx = bdb.transactions.fulfill(
@@ -97,12 +98,28 @@ def create_tender():
 
 @app.route('/execute_create_bid')
 def execute_create_bid():
-    print(session['dept_id'], session['dept_publicKey'])
+    print(session['dept_id'], session['dept_publicKey'],
+          session['dept_privateKey'])
+
+    data = {
+        'data': {
+            'profile': {
+                "seller_id": randint(1, 9999999999),
+                "seller_name": request.form['seller-name'],
+                "seller_city": request.form['seller-city'],
+                "seller_state": request.form['seller-state'],
+                "seller_publicKey": new_user.public_key,
+            },
+        },
+    }
+
+    from bigchaindb_driver.crypto import generate_keypair
+    new_user = generate_keypair()
 
     prepared_token_tx = bdb.transactions.prepare(
         operation='CREATE',
         signers=new_user.public_key,
-        asset=acc_data,
+        asset=data,
         metadata={
             "test": "true"
         })
@@ -115,21 +132,65 @@ def execute_create_bid():
 
 @app.route('/execute_create_tender', methods=['POST'])
 def execute_create_tender():
-    print(session['dept_id'], session['dept_publicKey'])
+    print(session['dept_id'], session['dept_publicKey'],
+          session['dept_privateKey'])
+
+    f = request.files['tender_pdf']
+    f.save(secure_filename(f.filename))
+    from app import ipfs
+
+    from Crypto.PublicKey import RSA
+    key = RSA.generate(2048)
+    privateKey = key.exportKey('DER')
+    publicKey = key.publickey().exportKey('DER')
+
+    ipfs_hash = ipfs.upload(secure_filename(f.filename))
+
+    with open('pp.txt', 'wb') as g:
+        g.write(publicKey)
+
+    ipfs_hash2 = ipfs.upload('pp.txt')
+
+    data = {
+        'data': {
+            'tender': {
+                "tender_id": randint(1, 9999999999),
+                "tender_title": request.form['tender_title'],
+                "tender_refNo": request.form['tender_refNo'],
+                "tender_bidClosingDate": request.form['tender_bidClosingDate'],
+                "tender_bidOpeningDate": request.form['tender_bidOpeningDate'],
+                "tender_clauses": request.form['tender_clauses'],
+                "tender_amount": request.form['tender_amount'],
+                "tender_ipfs_address": ipfs_hash,
+                "tender_filename": f.filename,
+                "tender_publicKey_ipfs": ipfs_hash2,
+            },
+        },
+    }
+
+    from bigchaindb_driver.crypto import generate_keypair
+    new_user = generate_keypair()
 
     prepared_token_tx = bdb.transactions.prepare(
         operation='CREATE',
         signers=session['dept_publicKey'],
         asset=data,
         metadata={
-            "test": "true"
+            "asdsa": "asd"
+            # "tender_publicKey": publicKey,
         })
 
+    print(type(session['dept_privateKey']))
     fulfilled_token_tx = bdb.transactions.fulfill(
         prepared_token_tx,
-        private_keys=new_user.private_key)
+        private_keys=session['dept_privateKey'])
     bdb.transactions.send_commit(fulfilled_token_tx)
-    return jsonify(request.form)
+
+    data['data']['tender']['tender_privateKey'] = privateKey
+    data['data']['tender']['tender_publicKey'] = publicKey
+
+    db.tender.insert(data['data']['tender'])
+    return 'done'
 
 
 @app.route('/')

@@ -17,5 +17,6 @@ def create_app():
     bdb_root_url = 'https://test.bigchaindb.com/'
     bdb = BigchainDB(bdb_root_url)
     app.config['SECRET_KEY'] = "anubhav"
+    app.config['UPLOAD_FOLDER'] = "upload"
     from app import views
     return app
