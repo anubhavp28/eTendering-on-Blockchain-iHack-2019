@@ -111,7 +111,7 @@ var tagsBoxes = {
             if (this.el.item(i) === val)
                 return i;
         }
-        return -1;    
+        return -1;
     },
     addTag: function (obj) {
         var box = obj.parentElement.parentElement;
@@ -195,7 +195,7 @@ function showLoginForm() {
 }
 
 function companySignUp() {
-    var data = { 
+    var data = {
         "name" : document.getElementById('company-name').value,
         "email" : document.getElementById('company-email').value,
         "skills" : tagsBoxes.getTags(document.getElementById('company-skills')),
@@ -228,3 +228,9 @@ $(document).ready(function(){
   });
 });
 
+function showBiddingForm() {
+  var x = document.getElementById("biddingform");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }
+}
