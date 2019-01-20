@@ -9,6 +9,7 @@ from werkzeug import secure_filename
 
 client = MongoClient()
 
+
 @app.route('/create_govt_dept', methods=['POST'])
 def create_govt_dept():
     from bigchaindb_driver.crypto import generate_keypair
@@ -210,9 +211,12 @@ def view_all_tenders():
     return render_template('view_all_tenders.html', tenders=client.ihack.tender.find())
 
 
-@app.route('/view_tender')
+@app.route('/view_tender', methods=['POST'])
 def view_tender():
-    return render_template('view_tender.html')
+    tender = list(db.tender.find(
+        {"tender_id": int(request.form['tender-id'])}))[0]
+    print(tender)
+    return render_template('view_tender.html', tender=tender)
 
 
 @app.route('/execute_upload_tender')
