@@ -113,17 +113,16 @@
         <input type="button" class="button" onclick="" style="margin: 10px 0px;" value="View PDF">
 
       </form>
-      <form style="color: grey; display: none;" id="biddingform">
+      <form style="color: grey; display: none;" method="POST" action="/execute_create_bid" id="biddingform" enctype="multipart/form-data">
+        <input type="hidden" name="tender-id" class="textbox" value="{{ tender['tender_id'] }}" style="width: 100%">
         <label>Proposal Amount</label>
-        <input id="proposal-amount" type="textbox" class="textbox" placeholder="XXXXXXXXX" style="width: 100%" disabled>
-        <label></label>
-        <input id="company-email" type="textbox" class="textbox" placeholder="company-email" style="width: 100%"
-          disabled>
-        <label>Clauses</label>
-        <input type="text" class="textbox" style="width:100%" placeholder="f fu fuc fuc* - Did you think i would write that F-Word ?"
-          disabled>
+        <input id="proposal-amount" name="quotation-amount" type="textbox" class="textbox" style="width: 100%">
+        <label>Contact Email</label>
+        <input id="contact-email" type="textbox" name="contact-email" class="textbox" style="width: 100%">
+        <label>Proposal Clauses</label>
+        <textarea type="text" name="quotation-clause" class="textbox" style="width:100%"></textarea>
         <label>Tender PDF</label>
-        <input id="company-email" name="tender_pdf" type="file" class="textbox" placeholder="" style="width: 100%">
+        <input id="company-email" name="quotation-pdf" type="file" class="textbox" style="width: 100%">
         <input type="submit" class="button" style="width:100%;margin: 10px 0px;" value="Place Bid">
       </form>
     </div>

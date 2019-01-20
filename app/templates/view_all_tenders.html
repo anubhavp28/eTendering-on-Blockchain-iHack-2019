@@ -34,7 +34,7 @@
     <div id="register-div" style="background-color: #f5f5fa ; width: 650px; margin: 50px;
    border-top: 8px solid #dddde0; padding: 15px; padding-bottom: 40px; border-radius: 6px;">
       <div style="font-weight:500; margin: 10px 0px; font-size: 15px; color: rgb(185, 184, 184)">TENDER</div>
-      <form action="/view_tender" method="POST">
+      <form action="/view_tender" method="POST" enctype="multipart/form-data">
         <input type="hidden" name='tender-id' value="{{ tender['tender_id'] }}">
         <span>{{ tender['tender_refNo'] }}</span><br>
         <span>{{ tender['tender_title'] }}</span><br>

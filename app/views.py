@@ -92,7 +92,7 @@ def create_seller_id():
     acc_data['data']['profile']['seller_privateKey'] = new_user.private_key
     db.sellers.insert(acc_data['data']['profile'])
 
-    return 'done'
+    return redirect(url_for('dashboard'))
 
 
 @app.route('/create_tender')
@@ -100,38 +100,68 @@ def create_tender():
     return render_template('create_tender.html')
 
 
-@app.route('/execute_create_bid')
+@app.route('/execute_create_bid', methods=['POST'])
 def execute_create_bid():
-    print(session['dept_id'], session['dept_publicKey'],
-          session['dept_privateKey'])
+  #  print(session['seller_id'], session['seller_publicKey'],
+    #          session['seller_privateKey'])
+
+    f = request.files['quotation-pdf']
+    f.save(secure_filename(f.filename))
+    from app import ipfs
+    from Crypto.PublicKey import RSA
+
+    tender = list(db.tender.find(
+        {"tender_id": int(request.form['tender-id'])
+         }
+    ))[0]
+
+    ipfs_hash = ipfs.upload(secure_filename(f.filename))
+
+    print(tender)
+
+    binpublicKey = tender['tender_publicKey']
+
+    publicKey = RSA.importKey(binpublicKey)
+
+    #eamount = publicKey.encrypt(request.form['quotation-amount'], 32)[0]
 
     data = {
         'data': {
-            'profile': {
-                "seller_id": randint(1, 9999999999),
-                "seller_name": request.form['seller-name'],
-                "seller_city": request.form['seller-city'],
-                "seller_state": request.form['seller-state'],
-                "seller_publicKey": new_user.public_key,
+            'bid': {
+                "quotation_id": randint(1, 9999999999),
+                "tender_id": tender['tender_id'],
+                "tender_refNo": tender['tender_refNo'],
+                "quotation_clause": request.form['quotation-clause'],
+                "quotation_amount": request.form['quotation-amount'],
+                "quotation_ipfs_address": ipfs_hash,
+                "quotation_filename": f.filename,
             },
         },
     }
 
     from bigchaindb_driver.crypto import generate_keypair
-    new_user = generate_keypair()
 
     prepared_token_tx = bdb.transactions.prepare(
         operation='CREATE',
-        signers=new_user.public_key,
+        signers=session['dept_publicKey'],
         asset=data,
         metadata={
-            "test": "true"
+            "asdsa": "asd"
+            # "tender_publicKey": publicKey,
         })
 
+    print(type(session['dept_privateKey']))
     fulfilled_token_tx = bdb.transactions.fulfill(
         prepared_token_tx,
-        private_keys=new_user.private_key)
+        private_keys=session['dept_privateKey'])
     bdb.transactions.send_commit(fulfilled_token_tx)
+
+    data['data']['bid']['tender_privateKey'] = privateKey
+    data['data']['bid']['tender_publicKey'] = publicKey
+
+    db.quotation.insert(data['data']['bid'])
+
+    return 'done'
 
 
 @app.route('/execute_create_tender', methods=['POST'])
