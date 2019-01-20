@@ -3,7 +3,7 @@
 
 <head>
   <title>
-    Placement Portal : IIIT Kalyani
+    Hack Tenders
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#204584">
@@ -15,12 +15,16 @@
 <body>
   <div id="header">
     <div id="logo-holder">
-      <div id="logo" style="height:50px;">
-        <img src="{{ url_for('static', filename='img/logo.png') }}" style="float:left; height: 90%; width: auto;">
+      <div id="logo" style="height:125px; display: flex; align-items: center;">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 90%; width: auto;">
       </div>
     </div>
-    <div id="nav" style="float: right;">
-      <a href="index.html" class="blue-background"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Home</a>
+    <div id="nav" class="nav">
+      <a href="#home">Home</a>
+      <a href="#about" class="blue-background">About</a>
+    </div>
+    <div id="nav-mobile" class="nav">
+      <a href="javascript:void(0)" onclick="$('#mobile-menu').css('display','flex')" class="blue-background">Menu</a>
     </div>
   </div>
   <div style="padding: 30px; display: flex; flex-direction: row; justify-content: center; align-items: flex-start;">
@@ -48,20 +52,20 @@
         <div id="company-skills" class="tagsbox">
           <div class="tags-container" style="margin: 5px 0px 5px 0px;">
 
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px;
                background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">HTML5&nbsp;&nbsp;<i
                 class="fas fa-times"></i></div>
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px;
                background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">C&nbsp;&nbsp;<i
                 class="fas fa-times"></i></div>
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px;
                background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">PHP&nbsp;&nbsp;<i
                 class="fas fa-times"></i></div>
           </div>
           <div style="margin: 4px 0px; position: relative; padding: 0px;">
             <input type="textbox" class="textbox" placeholder="Skills Required" style=" margin: 0px; width: 100%; padding-right: 50px;">
             <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
+              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute;
                  padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
             </a>
           </div>
@@ -69,17 +73,17 @@
         <input id="company-ctc" type="textbox" class="textbox" placeholder="Approx. CTC" style="width: 100%">
         <div id="company-positions" class="tagsbox">
           <div class="tags-container" style="margin: 5px 0px 5px 0px;">
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px;
               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Software
               Engineer&nbsp;&nbsp;<a href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px;
               background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Security
               Engineer&nbsp;&nbsp;<a href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
           </div>
           <div style="margin: 4px 0px; position: relative; padding: 0px;">
             <input type="textbox" class="textbox" placeholder="Positions Offering" style=" margin: 0px; width: 100%; padding-right: 50px;">
             <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
+              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute;
               padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
             </a>
           </div>
@@ -88,20 +92,20 @@
 
         <div id="company-location" class="tagsbox">
           <div class="tags-container" style="margin: 5px 0px 5px 0px;">
-            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px;display: inline-block; padding: 5px 10px;
                background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Mumbai&nbsp;&nbsp;<a
                 href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
-            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px; 
+            <div class="tag placeholder" style="margin: 3px; display: inline-block; padding: 5px 10px;
                background-color: rgb(192, 192, 192); color: white;border-radius: 6px;">Delhi&nbsp;&nbsp;<a
                 href="javascript:void(0)" onclick="removeTag(this)"><i class="fas fa-times"></i></a></div>
           </div>
           <div style="margin: 4px 0px; position: relative; padding: 0px;">
             <input type="textbox" class="textbox" placeholder="Office Locations" style=" margin: 0px; width: 100%; padding-right: 50px;">
             <a href="javascript:void(0)" onclick="tagsBoxes.addTag(this)">
-              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute; 
+              <i class="fas fa-plus-square add-icon" style="font-size: 25px;display:block; position: absolute;
                padding: 11px 10px; right: 1px; top: 1px; z-index: 2;"></i>
             </a>
-          </div> 
+          </div>
     </div>-->
         <input type="submit" class="button" style="width:100%;margin: 10px 0px;" value="Create Tender">
       </form>
