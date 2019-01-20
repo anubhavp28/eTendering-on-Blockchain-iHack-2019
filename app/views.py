@@ -111,7 +111,10 @@ def execute_upload_tender():
     db.tender.insert(data)
     return 'done'
 
-
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
+	
 @app.route('/test')
 def test():
     return json.dumps(db.test.find()[0]["name"])

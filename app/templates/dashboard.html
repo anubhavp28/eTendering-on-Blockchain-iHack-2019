@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>
+    Placement Portal : IIIT Kalyani
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#204584">
+  <meta name="msapplication-navbutton-color" content="#204584">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#204584">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo_small.png') }}">
+</head>
+
+<body>
+  <div id="header">
+    <div id="logo-holder">
+      <div id="logo" style="height:125px; display: flex; align-items: center;">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" style="height: 90%; width: auto;">
+      </div>
+    </div>
+    <div id="nav" class="nav">
+      <a href="#home">Home</a>
+      <a href="#about" class="blue-background">About</a>
+    </div>
+    <div id="nav-mobile" class="nav">
+      <a href="javascript:void(0)" onclick="$('#mobile-menu').css('display','flex')" class="blue-background">Menu</a>
+    </div>
+  </div>
+  
+   <div id="main" class="section">
+      <div class="icons-div">
+        <a href="/profile" class="infra-icon">
+          <img class="tabs" src="../static/img/profile.png">
+          <span>PROFILE</span>
+        </a>
+        <a href="/" class="infra-icon">
+          <img src="img/bunk.svg">
+          <span>VIEW TENDERS</span>
+        </a>
+        <a href="http://iiitkalyani.ac.in/html/Other.html" class="infra-icon">
+          <img src="img/cooking.svg">
+          <span>CREATE TENDER</span>
+        </a>
+        <a href="http://iiitkalyani.ac.in/html/Medical.html" class="infra-icon">
+          <img src="img/hospital.svg">
+          <span>VIEW ALL TENDERS</span>
+        </a>
+        <a href="http://iiitkalyani.ac.in/html/Library.html" class="infra-icon">
+          <img src="img/books.svg">
+          <span>LOGOUT</span>
+        </a>
+      </div>
+    </div>
+  
+  <div id="footer">
+    <div id="footer-logo">
+    </div>
+    <div id="footer-credits">
+      Copyright &copy; 2019 Level1Hack
+    </div>
+  </div>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+    crossorigin="anonymous">
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

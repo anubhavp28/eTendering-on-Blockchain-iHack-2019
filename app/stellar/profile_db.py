@@ -19,5 +19,3 @@ url = 'https://friendbot.stellar.org'
 r = requests.get(url, params={'addr':publickey})      
 print(publickey, seed)
 
-
-
