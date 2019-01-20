@@ -169,7 +169,6 @@ def execute_create_tender():
     }
 
     from bigchaindb_driver.crypto import generate_keypair
-    new_user = generate_keypair()
 
     prepared_token_tx = bdb.transactions.prepare(
         operation='CREATE',
