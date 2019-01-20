@@ -1,6 +1,6 @@
 cd db_dump
-mongoimport --db test --collection tenders --drop --file tenders.json
-mongoimport --db test --collection tenders --drop --file dept.json
-mongoimport --db test --collection tenders --drop --file sellers.json
-mongoimport --db test --collection tenders --drop --file tender.json
+mongoimport --db ihack --collection tenders --drop --file tenders.json
+mongoimport --db ihack --collection dept --drop --file dept.json
+mongoimport --db ihack --collection sellers --drop --file sellers.json
+mongoimport --db ihack --collection tender --drop --file tender.json
 cd ..
