@@ -1,7 +1,79 @@
-from app import app, db
+from app import app, db, bdb
 import json
 from app import ipfs
 from flask import render_template
+
+
+@app.route('/create_govt_dept')
+def create_govt_dept():
+    from bigchaindb_driver.crypto import generate_keypair
+    new_user = generate_keypair()
+
+    acc_data = {
+        'data': {
+            'profile': {
+                "dept_id": 8332,
+                "dept_name": "Govt College of Engineering Kalyani",
+                "dept_city": "Kolkata",
+                "dept_state": "West Bengal",
+                "dept_publicKey": new_user.public_key,
+            },
+        },
+    }
+
+    prepared_token_tx = bdb.transactions.prepare(
+        operation='CREATE',
+        signers=new_user.public_key,
+        asset=acc_data,
+        metadata={
+            "ego": "true"
+        })
+
+    fulfilled_token_tx = bdb.transactions.fulfill(
+        prepared_token_tx,
+        private_keys=new_user.private_key)
+    bdb.transactions.send_commit(fulfilled_token_tx)
+
+    acc_data['dept_privateKey'] = new_user.private_key
+    db.dept.insert(acc_data)
+
+    return 'done'
+
+
+@app.route('/create_seller')
+def create_seller_id():
+    from bigchaindb_driver.crypto import generate_keypair
+    new_user = generate_keypair()
+
+    acc_data = {
+        'data': {
+            'profile': {
+                "seller_id": 8332,
+                "seller_name": "Baba Stationary Store",
+                "seller_city": "Kolkata",
+                "seller_state": "West Bengal",
+                "seller_publicKey": new_user.public_key,
+            },
+        },
+    }
+
+    prepared_token_tx = bdb.transactions.prepare(
+        operation='CREATE',
+        signers=new_user.public_key,
+        asset=acc_data,
+        metadata={
+            "ego": "true"
+        })
+
+    fulfilled_token_tx = bdb.transactions.fulfill(
+        prepared_token_tx,
+        private_keys=new_user.private_key)
+    bdb.transactions.send_commit(fulfilled_token_tx)
+
+    acc_data['seller_privateKey'] = new_user.private_key
+    db.sellers.insert(acc_data)
+
+    return 'done'
 
 
 @app.route('/')
